@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.2.final using JasperReports Library version 5.6.1  -->
+<!-- 2014-12-04T14:15:25 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FeedbackReviewReport" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" uuid="626b0b8c-7df0-45c5-9588-ccbb4473b68c">
+	<property name="ireport.zoom" value="1.1000000000000012"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA[$P{templatePath}]]></template>
+	<parameter name="templatePath" class="java.lang.String"/>
+	<parameter name="contactEmail" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="phoneareacode" class="java.lang.String"/>
+	<field name="receiveddate" class="java.util.Date"/>
+	<field name="feedback" class="java.lang.String"/>
+	<field name="resolution" class="java.lang.String"/>
+	<field name="resolved" class="java.lang.String"/>
+	<group name="heading2Group" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="17" splitType="Prevent">
+				<textField isStretchWithOverflow="true">
+					<reportElement style="GridHeading2" stretchType="RelativeToTallestObject" x="0" y="0" width="200" height="17" uuid="059ccbba-0374-4f80-89f0-d21c4756591f"/>
+					<textFieldExpression><![CDATA["User Info"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="GridHeading2" stretchType="RelativeToTallestObject" x="200" y="0" width="188" height="17" uuid="2ea83ef6-caba-4de0-9f1c-605d3f961eaa"/>
+					<textFieldExpression><![CDATA["Assigned Contact"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="GridHeading2" stretchType="RelativeToTallestObject" x="388" y="0" width="86" height="17" uuid="c5acb47a-d9cd-4723-be19-7ca45eb38154"/>
+					<textFieldExpression><![CDATA["Resolved ?"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="GridHeading2" stretchType="RelativeToTallestObject" x="474" y="0" width="80" height="17" uuid="bb397c67-01ff-41dd-80c4-ad805c08a03f"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA["Received"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<detail>
+		<band height="135" splitType="Prevent">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToTallestObject" x="0" y="0" width="200" height="17" uuid="ef574320-3de5-4399-9ef6-fbea05601694"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToTallestObject" x="0" y="17" width="200" height="17" uuid="ef574320-3de5-4399-9ef6-fbea05601694"/>
+				<textFieldExpression><![CDATA[($F{email} != null ? $F{email} : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToTallestObject" x="0" y="34" width="200" height="17" uuid="ef574320-3de5-4399-9ef6-fbea05601694"/>
+				<textFieldExpression><![CDATA[($F{phoneareacode} != null ? "(" + $F{phoneareacode} +")" : "") + ($F{phone} != null ? $F{phone} : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToTallestObject" x="200" y="0" width="188" height="51" uuid="29de92be-6fc6-449f-b9b2-35282c440000"/>
+				<textFieldExpression><![CDATA[$P{contactEmail}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToTallestObject" x="388" y="0" width="86" height="51" uuid="ddcd14c0-718d-4b13-934d-0a273641d671"/>
+				<textFieldExpression><![CDATA[($F{resolved}.equals("1") ?  " Yes " : "No")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToTallestObject" x="474" y="0" width="80" height="51" uuid="2aa38361-0cb1-4b56-95eb-0480460fca1c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{receiveddate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToBandHeight" x="0" y="52" width="554" height="36" uuid="ef574320-3de5-4399-9ef6-fbea05601694"/>
+				<textFieldExpression><![CDATA["Feedback" + $F{feedback}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="GridText" stretchType="RelativeToTallestObject" x="0" y="88" width="554" height="30" uuid="ef574320-3de5-4399-9ef6-fbea05601694"/>
+				<textFieldExpression><![CDATA["Resolution" +  ($F{resolution} != null ? $F{resolution} : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="GridHeading2" stretchType="RelativeToTallestObject" x="0" y="118" width="554" height="17" uuid="ef574320-3de5-4399-9ef6-fbea05601694"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

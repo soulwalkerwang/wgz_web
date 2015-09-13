@@ -1,0 +1,78 @@
+package com.guanzhong2;
+
+import java.util.Iterator;
+import java.util.TreeSet;
+import java.util.Comparator;
+
+
+
+public class TreeSetTest2 {
+	public static void main(String[] args) {
+		
+		TreeSet set = new TreeSet(new PersonComparator());
+		
+		Person p1 = new Person(10);
+		Person p2 = new Person(20);
+		Person p3 = new Person(30);
+		Person p4 = new Person(40);
+		
+		set.add(p1);
+		set.add(p2);
+		set.add(p3);
+		set.add(p4);
+		
+		for(Iterator iter = set.iterator(); iter.hasNext();)
+		{
+			Person p = (Person)iter.next();
+			System.out.println(p.score);
+			
+		}
+		
+	}
+
+}
+
+
+class Person
+{
+	int score;
+	
+	public Person(int score)
+	{
+		this.score = score;
+		
+	}
+	public String ToString()
+	{
+		
+		return String.valueOf(this.score);
+				
+	}
+}
+
+class PersonComparator implements Comparator {
+	
+	public int compare(Object o1, Object o2) {
+      	
+	   Person p1 = (Person)o1;
+	   Person p2 = (Person)o2;
+	   
+	   
+	   if(p1.score < p2.score)
+	   {
+		   return -1; 
+	   }
+	   if(p1.score == p2.score)
+	   {
+		   return 0;
+	   }
+	   else
+	   {
+		   return 1;
+	   }
+	   
+	}
+	
+	
+	
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:tns="http://www.example.org/hello/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+name="HelloService"
+targetNamespace="http://www.example.org/hello/">
+<wsdl:types>
+<xsd:schema targetNamespace="http://www.example.org/hello/">
+<xsd:element name="add" type="tns:add"></xsd:element>
+<xsd:element name="addResponse" type="tns:addResponse"></xsd:element>
+<xsd:element name="licenceInfo" type="tns:licenceInfo"></xsd:element>
+<xsd:complexType name="add">
+<xsd:sequence>
+<xsd:element name="a" type="xsd:int"></xsd:element>
+<xsd:element name="b" type="xsd:int"></xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="addResponse">
+<xsd:sequence>
+<xsd:element name="addResponse" type="xsd:int"></xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="licenceInfo">
+<xsd:sequence>
+<xsd:element name="licenceInfo" type="xsd:string"></xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+</wsdl:types>
+
+<wsdl:message name="add">
+<wsdl:part name="add" element="tns:add"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="addResponse">
+<wsdl:part name="addResponse" element="tns:addResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="licenceInfo">
+<wsdl:part name="licenceInfo" element="tns:licenceInfo"></wsdl:part>
+</wsdl:message>
+
+<wsdl:portType name="IHelloService">
+<wsdl:operation name="add">
+<wsdl:input message="tns:add"></wsdl:input>
+<wsdl:output message="tns:addResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+
+<wsdl:binding name="HelloServiceSOAP" type="tns:IHelloService">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+<wsdl:operation name="add">
+<wsdl:input>
+<soap:body use="literal" />
+<soap:header use="literal" part="licenceInfo" message="tns:licenceInfo"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal" />
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+
+<wsdl:service name="HelloService">
+<wsdl:port binding="tns:HelloServiceSOAP" name="HelloServicePort">
+<soap:address location="http://localhost:8080/hello" />
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="myAntProject" basedir="." default="package">
+	
+	<property name="hello" value="hello123"></property>
+	<property name="world" value="hello123"></property>
+	<property name="compile" value="compile"></property>
+	
+	<target name="init"></target>
+	<target name="preprocess" depends="init">
+		<mkdir dir="${compile}"/>
+	</target>
+	<target name="compile" depends="init,preprocess"></target>
+	<target name="package" depends="compile"></target>
+	<target name="myCompile" depends="preprocess">
+		<javac srcdir="src" destdir="${compile}"></javac>
+	</target>
+</project>
